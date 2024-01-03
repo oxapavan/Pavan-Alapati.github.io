@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Dorker</title>
+    <style>
+        body {
+            font-family: 'Bradley Hand', cursive;;
+            background-image: url('https://i.pinimg.com/564x/1e/6b/ba/1e6bbaf3f3ea9bf620446ef5aef8cb18.jpg'); 
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: #292929;
+            margin: 0;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 950px;
+            margin:25px auto;
+            padding: 70px;
+            background-color: #333;
+            color: #fff;
+            box-shadow: 0 2px 4px rgba(116, 28, 78, 0.62);
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #444;
+            border: 5px solid #191313;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            padding: 10px;
+            gap: 5px; /* Added gap between cards */
+            justify-content: space-between; /* Align cards to evenly distribute space */
+        }
+
+        .sensitive-info {
+            width: 110%;
+            font-size: 20px;
+            color: #020118;
+            margin-bottom: 5px;
+            
+        }
+
+        .card {
+            flex: 1 1 calc(30% - 20px); /* Adjusted card width for three cards in a row with gap */
+            padding: 20px;
+            background-color: #555;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+
+        .card:hover {
+            background-color: #777;
+            transform: translateY(-10px);
+        }
+
+        .card a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+
+        .card a:hover {
+            color: #ffc107;
+        }
+
+        .card span {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 12px;
+            color: #ccc;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: #e4e4e4;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .social-icons a:hover {
+            color: #cf1919;
+        }
+    </style>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-...." crossorigin="anonymous" />
+</head>
+<body>
+    <div class="social-icons">
+        <a href="https://twitter.com/Apavxn" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/Pavan-Alapati" target="_blank"><i class="fab fa-github"></i></a>
+        <a href=" https://www.linkedin.com/in/pavan-alapati-b15459248/ " target="_blank"><i class="fab fa-linkedin"></i></a>
+    </div>
+
+    <div class="container">
+        <input type="text" id="domain-input" placeholder=" Can You Enter a domain to search(exploit) ">
+        <div class="card-container">
+
+            <div class="sensitive-info"> Sensitive information </div>
+
+            <div class="card" onclick="dorkSearch('site:example.com  inurl:?url=http   ')">
+                <a href="#"> HTTP-PROTOCOL </a>
+            </div>
+
+
+            <div class="card" onclick="dorkSearch('site:example.com  /files inurl:/kcfinder/browse.php  ')">
+                <a href="#"> kcfinder-File Manager </a>
+            </div>
+
+
+            <div class="card" onclick="dorkSearch('site:example.com  intext:indexof intext:docker  ')">
+                <a href="#"> Docker  </a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('site:example.com  inurl:signup | inurl:sign-up | inurl:register | inurl:registration  site:.com inurl:login | inurl:logon | inurl:sign-in | inurl:signin | inurl:portal ')">
+                <a href="#"> SignUp ,  Register , Login  </a>
+            </div>
+
+
+
+            <div class="card" onclick="dorkSearch('site:example.com intext:userfiles intitle:Index Of site:*.com.*  ')">
+                <a href="#"> userfiles Stored in indexes  </a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('site:example.com intext:administrator filetype:txt intext:account inurl:/admin , intext:administrator filetype:txt intext:account allinurl: ')">
+                <a href="#"> Administrator-Account </a>
+            </div>
+
+
+
+
+
+
+            <div class="card" onclick="dorkSearch('site:example.com inurl:final.attendee.list inurl:password + admin OR usernam')">
+                <a href="#">inurl:final.attendee.list inurl:password + admin OR usernam </a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('site:example.com filetype:PDF filetype:xls filetype:php filetype:aspx filetype:swf filetype:wsdl filetype:reg reg HKEY_CLASSES_ROOT -git   inurl:/wwwboard/passwd.txt  database.yml inurl:.php.txt ext:txt  ')">
+                <a href="#">Database files  - endpoints </a>
+            </div>
+
+           
+
+            <div class="card" onclick="dorkSearch('site:example.com ext:log  ext:txt ext:conf  ext:cnf  ext:ini  ext:env  ext:sh  ext:bak ext:backup  ext:swp  ext:old  ext:~  ext:git  ext:svn  ext:htpasswd  ext:htaccess ')">
+                <a href="#"> Possible Database 1 </a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('site:example.com  filetype:mbx mbx intext:Subject filetype:myd myd -CVS filetype:ns1 ns1 filetype:ora ora  filetype:ora tnsnames filetype:pdb pdb backup (Pilot | Pluc kerdb) filetype:php inurl:index inurl:phpicalendar -site:sourceforge.net filetype:pot inurl:john.pot  filetype:PS ps filetype:pst inurl:outlook.pst filetype:pst pst -from -to -date  filetype:qbb qbb  filetype:QBW qbw  filetype:rdp rdp filetype:reg Terminal Server Clnt  filetype:vcs vc s filetype:wab wab  filetype:xls -site:gov inurl:c ontac t    filetype:xls inurl:email.xls ')">
+                <a href="#"> Possible Database 2 </a>
+            </div>
+
+
+            
+
+            <div class="card" onclick="dorkSearch('site:example.com “Index of” “database.sql.zip”  intext:Session Start * * * *:*:* * filetype:log intext:SQLiteManager inurl:main.php  ')">
+                <a href="#">  Database.Sql </a>
+            </div>
+
+
+
+            <div class="card" onclick="dorkSearch('site:example.com inurl:login.php intext:login inurl:portal.php inurl:register.php ')">
+                <a href="#"> Login Pages </a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('site:example.comintext:indexof intext:api_keys  OR api_key apikey ')">
+                <a href="#"> Api Keys </a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('site:example.com inurl:@gmail.com OR inurl:@yahoo.com OR inurl:email OR inurl:@live,com  inurl:email intext:email  ')">
+                <a href="#">Gmail's in the target </a>
+            </div>
+
+
+            <div class="card" onclick="dorkSearch('site:example.com inurl:group_concat filetype:php intext:admin ')">
+                <a href="#">Admin endpoints </a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('site:example.com  confidential  “employee only”  proprietary  top secret  classified  trade secret  internal  private  WS_FTP  ws_ftp  log  LOG filetype:log ')">
+                <a href="#">Internal Information </a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('site:example.com intitle:Webcam inurl:WebCam.htm  ')">
+                <a href="#">webcams </a>
+            </div>
+
+
+            <div class="sensitive-info"> Cloud-Storages </div>
+
+            <div class="card" onclick="dorkSearch('example.com site:amazonaws.com filetype:log intext:dhcp filetype:txt inurl:apollo ')">
+                <a href="#">S3 Buckets</a>
+            </div>
+
+            <div class="card" onclick="dorkSearch(' example.com site:s3-external-1.amazonaws.com  site:s3.dualstack.us-east-1.amazonaws.com ')">
+                <a href="#">Amazon S3-External </a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('example.com intitle:index of /aws.s3/ site:s3.amazonaws.com intext:indexof  	intitle:indexof intext:ec2-aws ')">
+                <a href="#">index of /aws.s3/</a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('example.com site:blob.core.windows.net ')">
+                <a href="#">Windows.new files </a>
+            </div>
+
+
+            <div class="card" onclick="dorkSearch('example.com site:googleapis.com  site:drive.google.com ')">
+                <a href="#"> Google.com</a>
+            </div>
+
+
+            <div class="card" onclick="dorkSearch('example.com site:dev.azure.com  inurl:cloudapp.azure.com ')">
+                <a href="#">Azure </a>
+            </div>
+
+
+            <div class="card" onclick="dorkSearch('example.com site:onedrive.live.com ')">
+                <a href="#">Onedrive </a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('example.com site:digitaloceanspaces.com ')">
+                <a href="#">digitaloceanspaces</a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('example.com site:sharepoint.com ')">
+                <a href="#"> sharepoint </a>
+            </div>
+
+
+            <div class="card" onclick="dorkSearch('example.com site:dropbox.com/s ')">
+                <a href="#">Drop-box </a>
+            </div>
+
+            <div class="sensitive-info"> Prone Parameters </div>
+
+            <div class="card" onclick="dorkSearch('site:example.com  ext:sql intext:-- phpMyAdmin SQL Dump')">
+                <a href="#"> Sql Dumb</a>
+            </div>
+
+
+            <div class="card" onclick="dorkSearch(' example.com  site:firebaseio.com')">
+                <a href="#">FireBase</a>
+            </div>
+
+
+            <div class="card" onclick="dorkSearch('site:example.com  inurl:upload-file intext:upload-file')">
+                <a href="#">File Uploads </a>
+            </div>
+
+
+            <div class="card" onclick="dorkSearch('example.com site:jfrog.io  ')">
+                <a href="#"> JFrog Artifactory </a>
+            </div>
+
+
+            <div class="card" onclick="dorkSearch('site:example.com  site:*/server-status apache  inurl:apache2.conf ')">
+                <a href="#"> Apache Server Status Exposed </a>
+            </div>
+
+
+
+
+
+            <div class="card" onclick="dorkSearch('site:example.com intext:Powered by & intext:Drupal & inurl:user ')">
+                <a href="#">Drupal </a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('site:example.com inurl:_cpanel/forgotpwd   inurl:UserLogin/ intitle:Panel ')">
+                <a href="#">Cpanel </a>
+            </div>
+
+
+            <div class="card" onclick="dorkSearch('site:example.com   site:*/joomla/login')">
+                <a href="#"> Joomla </a>
+            </div>
+
+
+            <div class="card" onclick="dorkSearch('site:example.com   inurl:url=  inurl:return=  inurl:next=  inurl:redirect=  inurl:redir=  inurl:ret=  inurl:r2=  inurl:page= inurl:& inurl:http ')">
+                <a href="#">Open-Redirect </a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('site:example.com  inurl:id=  inurl:pid=  inurl:category=  inurl:cat=  inurl:action=  inurl:sid=  inurl:dir= inurl:& ')">
+                <a href="#"> Sqli Parameters </a>
+            </div>
+
+
+            <div class="card" onclick="dorkSearch('site:example.com inurl:http  inurl:url=  inurl:path=  inurl:dest=  inurl:html=  inurl:data=  inurl:domain=  inurl:page= inurl:& ')">
+                <a href="#"> SSRF Prone Parameters </a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('site:example.com  inurl:include  inurl:dir  inurl:detail=  inurl:file=  inurl:folder=  inurl:inc=  inurl:locate=  inurl:doc=  inurl:conf= inurl:& ')">
+                <a href="#"> LFI parameters </a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('site:example.com inurl:cmd  inurl:exec=  inurl:query=  inurl:code=  inurl:do=  inurl:run=  inurl:read=  inurl:ping= inurl:& ')">
+                <a href="#"> Rce Parameters </a>
+            </div>
+
+
+            <div class="card" onclick="dorkSearch('site:example.com  inurl:config  inurl:env  inurl:setting  inurl:backup  inurl:admin  inurl:php')">
+                <a href="#"> config |env |setting |backup |admin |php</a>
+            </div>
+
+            <div class="sensitive-info"> Github Dorks </div>
+
+            <div class="card" onclick="dorkSearch('inurl:example.com  intext:api_hash intext:api_id intext:token site:github.com')">
+                <a href="#"> Github Api Keys</a>
+            </div>
+            <div class="sensitive-info"> Directory Listing </div>
+            
+            <div class="card" onclick="dorkSearch('site:example.com  intitle:indexof  intitle:index of / *key.pem  ext:log intitle:index of ext:sql,xls,xml,jsoncsv MYSQL_ROOT_PASSWORD: ext:env OR ext:yml -git   intitle:indexof config.db  allintext:API_SECRET* ext:env | ext:yml  intext:admin ext:sql inurl:admin  allintext:username,password filetype:log   inurl:.git')">
+                <a href="#"> SQL | Admin | Database-End Points</a>
+            </div>
+
+
+            <div class="card" onclick="dorkSearch('site:example.com  User-agent: * Disallow:/ssh/  Disallow:/assets/  Disallow:/user/list/ ')">
+                <a href="#"> Ssh | assets | users </a>
+            </div>
+
+
+            <div class="sensitive-info"> Wordpress </div>
+
+            <div class="card" onclick="dorkSearch(' site:example.com  inurl:/wp-admin/admin-ajax.php  intitle:Index-of wp-admin  intitle:Indexof   inurl:wp-json/oembed  allinurl:wps/portal/ login intitle: »Index of» wp-admin  ')">
+                <a href="#">Admin EndPoints</a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('site:example.com   inurl:/wp-admin/admin-ajax.php ')">
+                <a href="#">Wordpress Admin end points </a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('site:example.com  intitle:index of inurl:wp-config.php.old wp-config.php.backup ')">
+                <a href="#"> Wordpress configphpfiles </a>
+            </div>
+
+
+            <div class="card" onclick="dorkSearch('site:example.com  inurl:wp-mail.php + intext:Theredoesntseemtobeanynewmail. intitle:index of inurl:wp-content/plugins/wp-mail-smtp/ ')">
+                <a href="#"> Mail-Server End points</a>
+            </div>
+
+
+        
+            <div class="card" onclick="dorkSearch('site:example.com   indexof:inurl:wp-content  ')">
+                <a href="#">wp-Content</a>
+            </div>
+
+
+            <div class="card" onclick="dorkSearch('site:example.com inurl:/wp-content/plugins/wp-shopping-cart/  inurl:wp-content/plugins/wp-dbmanager/ ')">
+                <a href="#"> Wp-Content Plugines</a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('site:example.com  inurl:/wp-content/plugins/super-forms/  inurl:wp-content/plugins/elementor   indexofplugins/wp-rocket  inurl:wp-content/plugins/brizy  index of content/uploads/backupbuddy  inurl:wp-contentpluginsphoto-gallery  inurl:wp-content/plugins/sportspress  inurl:wp-content/plugins/simple-file-list  inurl:/wp-content/plugins/wp-ecommerce-shop-styling/ ')">
+                <a href="#"> Wordpress End points 1</a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('site:example.com    inurl:wp-content/plugins/wp-jobsearch inurl:wp-content/plugins/ajax-load-more/lang/ inurl:wp-content/plugins/final-tiles-grid-gallery-lite inurl:wp-content/plugins/woocommerce inurl:wp-content/plugins/yop-poll ')">
+                <a href="#">Wordpress End points 2 </a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('site:example.com  inurl:wp-content/plugins/sportspress \
+            inurl:wp-content/plugins/simple-file-list \
+            inurl:/wp-content/plugins/wp-ecommerce-shop-styling/ \
+            inurl:wp-content/plugins/wp-jobsearch \
+            inurl:wp-content/plugins/ajax-load-more/lang/ \
+            inurl:wp-content/plugins/final-tiles-grid-gallery-lite \
+            inurl:wp-content/plugins/woocommerce \
+            inurl:wp-content/plugins/yop-poll \
+            inurl:wp-content/plugins/final-tiles-grid-gallery-lite \
+            inurl:wp-content/plugins/adrotate \
+            inurl:wp-content/plugins/mappress-google-maps-for-wordpress \
+            inurl:wp-content/plugins/bbPress \
+            inurl:wp-content/plugins/gtranslate \
+            inurl:wp-content/plugins/grand-media \
+            inurl:wp-content/plugins/iframe \
+            inurl:wp-content/plugins/woo-order-export-lite \
+            inurl:wp-content/plugins/drag-and-drop-multiple-file-upload-contact-form-7 \
+            inurl:wp-content/plugins/siteorigin-panels \
+            inurl:wp-content/plugins/official-mailerlite-sign-up-forms \
+            inurl:wp-content/plugins/form-maker \
+            intitle:Index of intitle:UserPro -uploads \
+            inurl:index.php?option=com_ccnewsletter inurl:sbid ')">
+                <a href="#">Wordpress End points 3</a>
+            </div>
+
+            <div class="sensitive-info"> Php Shells </div>
+
+            <div class="card" onclick="dorkSearch('site:example.com inurl:/phpMyAdmin/index.php?server=1 \
+                inurl:node_modules/ua-parser-js \
+                index of /wp-admin.jpg site:bd \
+                phpMyAdmin SQL Dump ext:txt')">
+                <a href="#"> phpadmin /  node-modules /  sql / wpadmin </a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('site:example.com     inurl:/home/user/public_html/index.php:123  inurl:/home/user/public_html/functions.php:456 inurl:/home/user/public_html/config.php:1011 inurl:/home/user/public_html/index.phop:  inurl:/www/html/home/user/secret.txt intext:ViewCVS inurl:Settings.php ')">
+                <a href="#"> .php Shells </a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('site:example.com   intext:user filetype:php intext:account inurl:/admin ')">
+                <a href="#"> user filetype:php intext:account inurl:admin </a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('site:example.com     intext:SQLiteManager inurl:main.php intext:ViewCVS inurl:Settings.php  filetype:log inurl:PHP_Parse_error_PHP_Warning_PHP_Error')">
+                <a href="#"> Sqlit manager  </a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('site:example.com   intitle:PHP Advanc ed Transfer (inurl:index.php | inurl:showrec ent.php )intitle:PhpMyExplorer inurl:index.php -cvs  ')">
+                <a href="#"> PhpMyExplorer </a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('site:example.com  inurl:php_error.log  intitle:index of inurl:configuration.php ')">
+                <a href="#"> PHP Error-Logs </a>
+            </div>
+
+
+            <div class="card" onclick="dorkSearch('site:example.com  inurl:php.ini filetype:ini  inurl:vbstats.php page generated  ')">
+                <a href="#"> Php admin.ini  </a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('site:example.com inurl:wp-mail.php + intext:There doesnt seem to be any new mail  ')">
+                <a href="#">Wp-main.php  </a>
+            </div>
+            
+
+            <div class="sensitive-info">  Atlassian Jira Project Management Software </div>
+
+            <div class="card" onclick="dorkSearch('site:example.com   inurl:app/kibana intext:LoadingKibana ')">
+                <a href="#"> Atlassian Jira Project Management Software </a>
+            </div>
+
+
+            <div class="card" onclick="dorkSearch('site:example.com  ')">
+                <a href="#"></a>
+            </div>
+
+
+            <div class="card" onclick="dorkSearch('site:example.com  ')">
+                <a href="#"></a>
+            </div>
+
+
+            <div class="card" onclick="dorkSearch('site:example.com  ')">
+                <a href="#"></a>
+            </div>
+
+
+        </div>
+    </div>
+
+    <script>
+        function dorkSearch(dork) {
+            const domain = document.getElementById('domain-input').value;
+            if (!domain) {
+                alert(' Bruh U should Probably Give a domain to search');
+                return;
+            }
+            window.open(`https://www.google.com/search?q=${dork.replace('example.com', domain)}`);
+        }
+    </script>
+
+<p style="color: rgba(241, 241, 241, 0.973); font-family:'Courier New', Courier, monospace ;">Author: Pavan Alapati</p>
+
+<p style="color: rgba(101, 12, 143, 0.973); font-family:'Courier New', Courier, monospace ;">I Would Love To get Feedback </p>
+
+</body>
+</html>
