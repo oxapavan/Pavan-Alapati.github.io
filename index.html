@@ -119,6 +119,23 @@
         <input type="text" id="domain-input" placeholder=" Can You Enter a domain to search(exploit) ">
         <div class="card-container">
 
+            
+            <div class="card" onclick="dorkSearch('site:*.example.com  ')">
+                <a href="#"> Level 1 subdomain </a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('site:*.*.example.com  ')">
+                <a href="#"> Level 2 subdomain </a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('site:*.*.*.example.com  ')">
+                <a href="#"> Level 3 subdomain </a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('site:*.*.*.*.example.com  ')">
+                <a href="#"> Level 4 subdomain </a>
+            </div>
+
             <div class="sensitive-info"> Sensitive information </div>
 
             <div class="card" onclick="dorkSearch('site:example.com  inurl:?url=http   ')">
@@ -147,6 +164,11 @@
 
             <div class="card" onclick="dorkSearch('site:example.com intext:administrator filetype:txt intext:account inurl:/admin , intext:administrator filetype:txt intext:account allinurl: ')">
                 <a href="#"> Administrator-Account </a>
+            </div>
+
+
+            <div class="card" onclick="dorkSearch(' example.com  site:firebaseio.com')">
+                <a href="#">FireBase</a>
             </div>
 
 
@@ -179,6 +201,12 @@
                 <a href="#">  Database.Sql </a>
             </div>
 
+            <div class="card" onclick="dorkSearch('site:example.com   `intext:”Error Message” intext:”MySQL server” intext:”on * using password:”` `intext:”Warning: mysql_connect()” intext:”on line” filetype:php` ')">
+                <a href="#"> SQL-Error Messages  </a>
+            </div>
+
+
+
 
 
             <div class="card" onclick="dorkSearch('site:example.com inurl:login.php intext:login inurl:portal.php inurl:register.php ')">
@@ -198,13 +226,45 @@
                 <a href="#">Admin endpoints </a>
             </div>
 
-            <div class="card" onclick="dorkSearch('site:example.com  confidential  “employee only”  proprietary  top secret  classified  trade secret  internal  private  WS_FTP  ws_ftp  log  LOG filetype:log ')">
+            <div class="card" onclick="dorkSearch('site:example.com  confidential  “employee only”  proprietary  top secret  classified  trade secret  internal  private  WS_FTP  ws_ftp  log  LOG filetype:log  inurl:*.doc | inurl:*.pdf | inurl:*.xls | inurl:*.ppt | inurl:*.rtf | inurl:*.ps` ')">
                 <a href="#">Internal Information </a>
             </div>
 
-            <div class="card" onclick="dorkSearch('site:example.com intitle:Webcam inurl:WebCam.htm  ')">
+            <div class="card" onclick="dorkSearch('site:example.com intitle:Webcam inurl:WebCam.htm  inurl:view/index.shtml intitle:live-view/-AXIS   intitle:”Network camera networkcamera”   ')">
                 <a href="#">webcams </a>
             </div>
+
+            
+
+            <div class="card" onclick="dorkSearch('example.com site:jfrog.io  ')">
+                <a href="#"> JFrog Artifactory </a>
+            </div>
+
+
+            <div class="card" onclick="dorkSearch('site:example.com  site:*/server-status apache  inurl:apache2.conf ')">
+                <a href="#"> Apache Server Status Exposed </a>
+            </div>
+
+
+
+
+
+            <div class="card" onclick="dorkSearch('site:example.com intext:Powered by & intext:Drupal & inurl:user ')">
+                <a href="#">Drupal </a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('site:example.com inurl:_cpanel/forgotpwd   inurl:UserLogin/ intitle:Panel `intitle:”Control Panel” inurl:/admin`   `intitle:”Control Panel” inurl:/cpanel` ')">
+                <a href="#">Cpanel </a>
+            </div>
+
+
+            <div class="card" onclick="dorkSearch('site:example.com   site:*/joomla/login')">
+                <a href="#"> Joomla </a>
+            </div>
+    
+
+
+
 
 
             <div class="sensitive-info"> Cloud-Storages </div>
@@ -255,45 +315,11 @@
 
             <div class="sensitive-info"> Prone Parameters </div>
 
-            <div class="card" onclick="dorkSearch('site:example.com  ext:sql intext:-- phpMyAdmin SQL Dump')">
-                <a href="#"> Sql Dumb</a>
-            </div>
 
 
-            <div class="card" onclick="dorkSearch(' example.com  site:firebaseio.com')">
-                <a href="#">FireBase</a>
-            </div>
 
-
-            <div class="card" onclick="dorkSearch('site:example.com  inurl:upload-file intext:upload-file')">
+            <div class="card" onclick="dorkSearch('site:example.com  inurl:upload-file intext:upload-file   `inurl:/uploadfile/ filetype:php`   `intext:”File Upload” inurl:/php/`')">
                 <a href="#">File Uploads </a>
-            </div>
-
-
-            <div class="card" onclick="dorkSearch('example.com site:jfrog.io  ')">
-                <a href="#"> JFrog Artifactory </a>
-            </div>
-
-
-            <div class="card" onclick="dorkSearch('site:example.com  site:*/server-status apache  inurl:apache2.conf ')">
-                <a href="#"> Apache Server Status Exposed </a>
-            </div>
-
-
-
-
-
-            <div class="card" onclick="dorkSearch('site:example.com intext:Powered by & intext:Drupal & inurl:user ')">
-                <a href="#">Drupal </a>
-            </div>
-
-            <div class="card" onclick="dorkSearch('site:example.com inurl:_cpanel/forgotpwd   inurl:UserLogin/ intitle:Panel ')">
-                <a href="#">Cpanel </a>
-            </div>
-
-
-            <div class="card" onclick="dorkSearch('site:example.com   site:*/joomla/login')">
-                <a href="#"> Joomla </a>
             </div>
 
 
@@ -448,20 +474,34 @@
                 <a href="#"> Atlassian Jira Project Management Software </a>
             </div>
 
+            <div class="sensitive-info">  exposed iot devises </div>
 
-            <div class="card" onclick="dorkSearch('site:example.com  ')">
-                <a href="#"></a>
+
+
+            <div class="card" onclick="dorkSearch('site:example.com  intitle:smart-tv inurl:/cgi-bin//login ')">
+                <a href="#"> Exposed Iot devises </a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('site:example.com  intitle:router-login inurl:\login')">
+                <a href="#"> Exposed Iot devises </a>
+            </div>
+
+            <div class="sensitive-info">  exposed Network devices </div>
+
+
+            <div class="card" onclick="dorkSearch('site:example.com  `intitle:”Brother” intext:”View Configuration”`')">
+                <a href="#"> Configuration </a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('site:example.com intitle:”Network Print Server” filetype:html')">
+                <a href="#"> Network Print Server </a>
+            </div>
+
+            <div class="card" onclick="dorkSearch('site:example.com  `intitle:”HP LaserJet” inurl:SSI/index.htm` ')">
+                <a href="#"> HP LaserJet </a>
             </div>
 
 
-            <div class="card" onclick="dorkSearch('site:example.com  ')">
-                <a href="#"></a>
-            </div>
-
-
-            <div class="card" onclick="dorkSearch('site:example.com  ')">
-                <a href="#"></a>
-            </div>
 
              <div class="sensitive-info"> Public Profiles </div>
             
